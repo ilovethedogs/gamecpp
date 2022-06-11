@@ -1,15 +1,5 @@
 ﻿  Game.cpp
-  Game.vcxproj -> C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\Debug\Game.exe
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\libfreetype-6.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\libogg-0.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\libpng16-16.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\libvorbis-0.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\libvorbisfile-3.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\SDL2.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\SDL2_image.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\SDL2_mixer.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\SDL2_ttf.dll
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\SDL\lib\win\x86\zlib1.dll
-  10 File(s) copied
-  C:\Users\woodong\Documents\gameprogcpp\code\Chapter01\\..\external\GLEW\lib\win\x86\glew32.dll
-  1 File(s) copied
+C:\GitHub\gamecpp\Chapter01\Game.h(10,10): fatal error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
+  Main.cpp
+C:\GitHub\gamecpp\Chapter01\Game.h(10,10): fatal error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
+  Generating Code...

@@ -10,8 +10,11 @@
 
 int main(int argc, char** argv)
 {
+	std::random_device rd{};
+	auto mtgen = std::mt19937{ rd() };
+	auto ud = std::uniform_real_distribution<>{ -0.5, 0.5 };
 	Game game;
-	bool success = game.Initialize();
+	bool success = game.Initialize(mtgen, ud);
 	if (success)
 	{
 		game.RunLoop();

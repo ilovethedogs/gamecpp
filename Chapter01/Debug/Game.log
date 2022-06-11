@@ -1,5 +1,17 @@
 ﻿  Game.cpp
-C:\GitHub\gamecpp\Chapter01\Game.h(10,10): fatal error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
-  Main.cpp
-C:\GitHub\gamecpp\Chapter01\Game.h(10,10): fatal error C1083: Cannot open include file: 'SDL/SDL.h': No such file or directory
-  Generating Code...
+C:\GitHub\gamecpp\Chapter01\Game.cpp(70,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\GitHub\gamecpp\Chapter01\Game.cpp(71,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Game.vcxproj -> C:\GitHub\gamecpp\Chapter01\Debug\Game.exe
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\libfreetype-6.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\libogg-0.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\libpng16-16.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\libvorbis-0.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\libvorbisfile-3.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\SDL2.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\SDL2_image.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\SDL2_mixer.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\SDL2_ttf.dll
+  C:\GitHub\gamecpp\Chapter01\\..\external\SDL\lib\win\x86\zlib1.dll
+  10 File(s) copied
+  C:\GitHub\gamecpp\Chapter01\\..\external\GLEW\lib\win\x86\glew32.dll
+  1 File(s) copied

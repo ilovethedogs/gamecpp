@@ -8,6 +8,8 @@
 
 #pragma once
 #include "SDL/SDL.h"
+#include <vector>
+#include <random>
 
 // Vector2 struct just stores x/y coordinates
 // (for now)
@@ -17,13 +19,18 @@ struct Vector2
 	float y;
 };
 
+struct Ball {
+	Vector2 mBallPos;
+	Vector2 mBallVel;
+};
+
 // Game class
 class Game
 {
 public:
 	Game();
 	// Initialize the game
-	bool Initialize();
+	bool Initialize(std::mt19937 rd, std::uniform_real_distribution<> ud);
 	// Runs the game loop until the game is over
 	void RunLoop();
 	// Shutdown the game
@@ -48,9 +55,8 @@ private:
 	int mPaddleDir0;
 	int mPaddleDir1;
 	// Position of paddle
-	Vector2 mPaddlePos;
-	// Position of ball
-	Vector2 mBallPos;
-	// Velocity of ball
-	Vector2 mBallVel;
+	Vector2 mPaddlePos0;
+	Vector2 mPaddlePos1;
+
+	std::vector<Ball> mBalls;
 };

@@ -9,6 +9,11 @@
 #pragma once
 #include "SpriteComponent.h"
 #include <vector>
+struct AnimTexture {
+	std::pair<size_t, size_t> range;
+	bool circulation;
+};
+
 class AnimSpriteComponent : public SpriteComponent
 {
 public:
@@ -16,7 +21,7 @@ public:
 	// Update animation every frame (overridden from component)
 	void Update(float deltaTime) override;
 	// Set the textures used for animation
-	void SetAnimTextures(const std::vector<SDL_Texture*>& textures, const std::vector<std::pair<size_t, size_t>>& textureRanges);
+	void SetAnimTextures(const std::vector<SDL_Texture*>& textures, const std::vector<struct AnimTexture>& textureRanges);
 	void SelectAnim(size_t n);
 	// Set/get the animation FPS
 	float GetAnimFPS() const { return mAnimFPS; }
@@ -24,7 +29,7 @@ public:
 private:
 	// All textures in the animation
 	std::vector<SDL_Texture*> mAnimTextures;
-	std::vector<std::pair<size_t, size_t>> mAnimTextureRanges;
+	std::vector<struct AnimTexture> mAnimTextureList;
 	// Current frame displayed
 	float mCurrFrame;
 	// Animation frame rate

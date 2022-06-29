@@ -41,9 +41,9 @@ Ship::Ship(Game* game)
 		game->GetTexture("Assets/Character18.png"),
 	};
 
-	std::vector<std::pair<size_t, size_t>> animRanges{
-		{0, 3},
-		{4, 21}
+	std::vector<struct AnimTexture> animRanges{
+		{{0, 3}, true},
+		{{4, 21}, false}
 	};
 
 	asc->SetAnimTextures(anims, animRanges);

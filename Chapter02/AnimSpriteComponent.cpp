@@ -25,22 +25,28 @@ void AnimSpriteComponent::Update(float deltaTime)
 	{
 		// Update the current frame based on frame rate
 		// and delta time
-		mCurrFrame += mAnimFPS * deltaTime;
+		auto change = mAnimFPS * deltaTime;
+		mCurrFrame += change;
 		
 		// Wrap current frame if needed
-		size_t l_bound{ mAnimTextureRanges[mCurAnim].first };
-		size_t r_bound{ mAnimTextureRanges[mCurAnim].second };
-		if (mCurrFrame >= r_bound) mCurrFrame = l_bound;
+		size_t l_bound{ mAnimTextureList[mCurAnim].range.first };
+		size_t r_bound{ mAnimTextureList[mCurAnim].range.second };
+		if (mAnimTextureList[mCurAnim].circulation) {
+			if (mCurrFrame >= r_bound) mCurrFrame = l_bound;
+		}
+		else {
+			mCurrFrame -= change * (mCurrFrame >= r_bound);
+		}
 
 		// Set the current texture
 		SetTexture(mAnimTextures[static_cast<int>(mCurrFrame)]);
 	}
 }
 
-void AnimSpriteComponent::SetAnimTextures(const std::vector<SDL_Texture*>& textures, const std::vector<std::pair<size_t, size_t>>& textureRanges)
+void AnimSpriteComponent::SetAnimTextures(const std::vector<SDL_Texture*>& textures, const std::vector<struct AnimTexture>& textureRanges)
 {
 	mAnimTextures = textures;
-	mAnimTextureRanges = textureRanges;
+	mAnimTextureList = textureRanges;
 	if (mAnimTextures.size() > 0)
 	{
 		// Set the active texture to first frame
@@ -50,6 +56,6 @@ void AnimSpriteComponent::SetAnimTextures(const std::vector<SDL_Texture*>& textu
 }
 
 void AnimSpriteComponent::SelectAnim(size_t n) {
-	if (n >= 0 && n < mAnimTextureRanges.size())
+	if (n >= 0 && n < mAnimTextureList.size())
 		mCurAnim = n;
 }

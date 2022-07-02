@@ -58,3 +58,12 @@ void read_csv(char const* const filename, std::vector<std::vector<int>>& v) {
         }
     }
 }
+
+void TileMapComponent::Draw(SDL_Renderer* renderer) {
+    for ()
+}
+
+void TileMapComponent::SetTileMapTexture(SDL_Texture* texture) {
+    mTileMapTexture = texture;
+
+}

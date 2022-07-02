@@ -6,12 +6,10 @@
 #include <memory>
 #include "SpriteComponent.h"
 
-class TimeMapComponent : public SpriteComponent {	
-
+class TileMapComponent : public SpriteComponent {	
 public:
-	void Update(float deltaTime) override;
 	void Draw(SDL_Renderer* renderer) override;
-	void SetTileTextures(const std::vector<SDL_Texture*>& textures);
+	void SetTileMapTexture(SDL_Texture* texture);
 protected:
 	std::vector<std::vector<int>> mTiles;
 };

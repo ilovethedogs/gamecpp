@@ -20,34 +20,27 @@ size_t read_data(char const* const filename, std::function<char* (size_t const)>
     return readbytes;
 }
 
-void read_csv(char const* const filename, std::vector<std::vector<int>>& v) {
+void read_csv(char const* const filename, std::array<int, TILE_SIZE>& a) {
     auto input{ std::make_unique<std::vector<unsigned char>>() };
     if (read_data(filename, [&input](size_t const length) {
         input->resize(length);
         return reinterpret_cast<char*> (input->data()); })
         ) {
         // successfully read file to input vector
+        size_t idx{ 0 };
         int tmp{ 0 };
         int negative{ 1 };
-        std::vector<int> tmp_v{};
         for (auto& c : *input) {
             switch (c) {
-            case ',':
+            case ',': case '\r':
                 tmp *= negative;
                 negative = 1;
-                tmp_v.push_back(tmp);
+                a[idx++] = tmp;
                 tmp = 0;
-                break;
-            case '\r':
-                tmp *= negative;
-                negative = 1;
-                tmp_v.push_back(tmp);
-                tmp = 0;
-                v.emplace_back(tmp_v);
-                tmp_v.clear();
                 break;
             case '\n':
-                continue;
+                a[idx++] = -2;
+                break;
             case '-':
                 negative = -1;
                 break;
@@ -59,11 +52,45 @@ void read_csv(char const* const filename, std::vector<std::vector<int>>& v) {
     }
 }
 
-void TileMapComponent::Draw(SDL_Renderer* renderer) {
-    for ()
+TileMapComponent::TileMapComponent(class Actor* owner, int drawOrder)
+    :SpriteComponent(owner, drawOrder)
+{
 }
 
-void TileMapComponent::SetTileMapTexture(SDL_Texture* texture) {
-    mTileMapTexture = texture;
+void TileMapComponent::Draw(SDL_Renderer* renderer) {
+    SDL_Rect t{};
+    SDL_Rect r{};
+    t.w = t.h = r.w = r.h =  32;
+    for (const auto& i : mTiles) {
+		r.x = static_cast<int>(mOwner->GetPosition().x);
+		r.y = static_cast<int>(mOwner->GetPosition().y);
+        for (const auto n : i) {
+            switch (n) {
+            case -1:
+                r.x += 32;
+                break;
+            case -2:
+                r.x = static_cast<int>(mOwner->GetPosition().x);
+                r.y += 32;
+                break;
+            default:
+                t.x = (n % 8) * 32;
+                t.y = static_cast<int>(n / 8) * 32;
+				SDL_RenderCopyEx(renderer,
+					mTexture,
+					&t,
+					&r,
+					0.0,
+					nullptr,
+					SDL_FLIP_NONE);
+                r.x += 32;
+            }
+        }
+    }
+}
 
+void TileMapComponent::readTiles(char const* const filename) {
+    std::array<int, TILE_SIZE> a{};
+    read_csv(filename, a);
+    mTiles.emplace_back(a);
 }
